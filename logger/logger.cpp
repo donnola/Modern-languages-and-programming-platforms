@@ -34,6 +34,7 @@ Logger::~Logger() {
 
 void Logger::AddInfo(std::string &fn, std::chrono::time_point<std::chrono::steady_clock> begin,
                      std::chrono::time_point<std::chrono::steady_clock> end) {
+    std::lock_guard<std::mutex> guard(map_mutex);
     log_info[fn].emplace_back(TimeInfo(begin, true));
     log_info[fn].emplace_back(TimeInfo(end, false));
 }

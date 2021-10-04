@@ -6,16 +6,18 @@
 #include <vector>
 #include <atomic>
 #include <chrono>
+#include <mutex>
 #include "timeinfo.h"
 
 
 class Logger {
     friend class Timer;
 
-protected:
+private:
     Logger() = default;
     ~Logger();
     static Logger *loggerInstance;
+    static std::mutex map_mutex;
     static Logger* GetInstance ();
     void AddInfo(std::string& fn, std::chrono::time_point<std::chrono::steady_clock> begin,
                  std::chrono::time_point<std::chrono::steady_clock> end);
