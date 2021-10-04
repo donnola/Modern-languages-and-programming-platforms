@@ -21,10 +21,10 @@ Logger::~Logger() {
     std::string file_name = "log_"+ std::to_string(cur_time);
     std::ofstream log_file(file_name);
 
-    for (auto f : log_info) {
+    for (auto& f : log_info) {
         std::string name = f.first;
-        size_t function_call_num = f.second.size();
-        size_t work_time = FunctionWorkTime(f.second);
+        size_t function_call_num = f.second.second.size();
+        size_t work_time = FunctionWorkTime(f.second.second);
         log_file << "function" + name + "worked" + std::to_string(work_time) + "milliseconds" +
         std::to_string(function_call_num) + "times\n";
     }
@@ -34,9 +34,11 @@ Logger::~Logger() {
 
 void Logger::AddInfo(std::string &fn, std::chrono::time_point<std::chrono::steady_clock> begin,
                      std::chrono::time_point<std::chrono::steady_clock> end) {
-    std::lock_guard<std::mutex> guard(map_mutex);
-    log_info[fn].emplace_back(TimeInfo(begin, true));
-    log_info[fn].emplace_back(TimeInfo(end, false));
+    map_mutex.lock();
+    std::lock_guard<std::mutex> guard(log_info[fn].first);
+    map_mutex.unlock();
+    log_info[fn].second.emplace_back(TimeInfo(begin, true));
+    log_info[fn].second.emplace_back(TimeInfo(end, false));
 }
 
 Logger *Logger::GetInstance() {

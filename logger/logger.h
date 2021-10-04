@@ -22,7 +22,7 @@ private:
     void AddInfo(std::string& fn, std::chrono::time_point<std::chrono::steady_clock> begin,
                  std::chrono::time_point<std::chrono::steady_clock> end);
     static size_t FunctionWorkTime(std::vector<TimeInfo>& time_intervals);
-    std::map<std::string, std::vector<TimeInfo>> log_info;
+    std::map<std::string, std::pair<std::mutex, std::vector<TimeInfo>>> log_info;
 };
 
 
