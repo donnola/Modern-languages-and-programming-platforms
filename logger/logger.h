@@ -10,16 +10,16 @@
 
 
 class Logger {
+    friend class Timer;
 public:
     static uint TakeId(const std::string& fn);
     static Logger* GetInstance();
-    void AddInfo(uint id, long time_elapsed);
-
 private:
     Logger() = default;
     ~Logger();
     static Logger* loggerInstance;
     static std::mutex log_mutex;
+    void AddInfo(uint id, long time_elapsed);
     std::deque<TimeInfo> log_info;
 };
 
