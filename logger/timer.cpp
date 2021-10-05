@@ -1,7 +1,5 @@
 #include "timer.h"
 
-#include <utility>
-
 
 Timer::~Timer() {
     end = std::chrono::steady_clock::now();

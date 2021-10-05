@@ -16,7 +16,6 @@ private:
     std::chrono::time_point<std::chrono::steady_clock> begin;
     std::chrono::time_point<std::chrono::steady_clock> end;
     size_t id;
-
 };
 
 
