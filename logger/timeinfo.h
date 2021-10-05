@@ -1,11 +1,15 @@
 #ifndef LOGGER_TIMEINFO_H
 #define LOGGER_TIMEINFO_H
 
-struct TimeInfo {
-    std::chrono::time_point<std::chrono::steady_clock> time;
-    bool start;
+#include <atomic>
+#include <utility>
 
-    TimeInfo(std::chrono::time_point<std::chrono::steady_clock> t, bool s) : time(t), start(s) {};
+struct TimeInfo {
+    std::string func_name;
+    std::atomic_long time{0};
+    std::atomic_uint count{0};
+
+    explicit TimeInfo(std::string fn) : func_name(std::move(fn)){};
 
 };
 

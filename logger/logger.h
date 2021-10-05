@@ -2,29 +2,26 @@
 #define LOGGER_LOGGER_H
 
 #include <string>
-#include <map>
-#include <vector>
-#include <atomic>
 #include <chrono>
 #include <mutex>
+#include <vector>
 #include "timeinfo.h"
 
 
 class Logger {
     friend class Timer;
 
-private:
-    Logger() = default;
-    ~Logger();
-    static Logger *loggerInstance;
-    static std::mutex map_mutex;
-    static Logger* GetInstance ();
-    void AddInfo(std::string& fn, std::chrono::time_point<std::chrono::steady_clock> begin,
-                 std::chrono::time_point<std::chrono::steady_clock> end);
-    static size_t FunctionWorkTime(std::vector<TimeInfo>& time_intervals);
-    std::map<std::string, std::pair<std::mutex, std::vector<TimeInfo>>> log_info;
-};
+public:
+    static uint TakeId(const std::string& fn);
 
+protected:
+    ~Logger();
+    static Logger* loggerInstance;
+    static Logger* GetInstance();
+    static std::mutex log_mutex;
+    void AddInfo(uint id, long time_elapsed);
+    std::vector<TimeInfo> log_info;
+};
 
 
 #endif

@@ -9,13 +9,13 @@
 
 class Timer{
 public:
-    explicit Timer(std::string fn);
+    explicit Timer(uint i) : begin(std::chrono::steady_clock::now()), id(i) {};
     ~Timer();
 
 private:
     std::chrono::time_point<std::chrono::steady_clock> begin;
     std::chrono::time_point<std::chrono::steady_clock> end;
-    std::string func_name;
+    size_t id;
 
 };
 
