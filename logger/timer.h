@@ -9,12 +9,12 @@
 
 class Timer{
 public:
-    explicit Timer(uint i) : begin(std::chrono::steady_clock::now()), id(i) {};
+    explicit Timer(uint i) : begin(std::chrono::high_resolution_clock::now()), id(i) {};
     ~Timer();
 
 private:
-    std::chrono::time_point<std::chrono::steady_clock> begin;
-    std::chrono::time_point<std::chrono::steady_clock> end;
+    std::chrono::time_point<std::chrono::high_resolution_clock> begin;
+    std::chrono::time_point<std::chrono::high_resolution_clock> end;
     size_t id;
 };
 
