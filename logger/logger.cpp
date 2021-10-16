@@ -1,6 +1,7 @@
 #include "logger.h"
 #include <fstream>
 #include <algorithm>
+#include <iostream>
 
 
 Logger* Logger::loggerInstance = nullptr;
@@ -17,10 +18,12 @@ Logger::~Logger() {
         std::string name = f.func_name;
         size_t function_call_num = f.count;
         size_t work_time = f.time;
-        log_file << "function " + name + " worked " + std::to_string(work_time) + " milliseconds " +
-        std::to_string(function_call_num) + " times\n";
+        std::string log_string = "function " + name + " worked " + std::to_string(work_time) + " milliseconds " +
+                                 std::to_string(function_call_num) + " times\n";
+        log_file << log_string;
+        std::cout << log_string;
     }
-
+    std::cout << "log writen into " + file_name;
     log_file.close();
 }
 

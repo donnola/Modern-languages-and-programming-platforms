@@ -28,6 +28,7 @@ void b() {
 
 
 int main() {
+    Logger* logger = Logger::GetInstance();
     std::string fn = __FUNCTION__;
     static uint id = Logger::TakeId(fn);
     Timer t(id);
