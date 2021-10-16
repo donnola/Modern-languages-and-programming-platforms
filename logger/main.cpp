@@ -11,11 +11,10 @@ using namespace std::chrono;
 int main() {
     Logger* logger = Logger::GetInstance();
 
+    std::cout << "колчичество возможных потоков: " << std::thread::hardware_concurrency() << "\n";
     // tests
-
     test1();
     test2();
     test3();
-
     return 0;
 }

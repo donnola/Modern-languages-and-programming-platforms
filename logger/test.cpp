@@ -6,8 +6,8 @@ void a1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-
-    sleep_until(system_clock::now() + seconds(2));
+    sleep_for(seconds(2));
+    //sleep_until(system_clock::now() + seconds(2));
 }
 
 void b1() {
@@ -15,7 +15,8 @@ void b1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_until(system_clock::now() + seconds(3));
+    sleep_for(seconds(3));
+    //sleep_until(system_clock::now() + seconds(3));
 }
 
 void c1() {
@@ -23,7 +24,8 @@ void c1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_until(system_clock::now() + seconds(5));
+    sleep_for(seconds(5));
+    //sleep_until(system_clock::now() + seconds(5));
 }
 
 void d1() {
@@ -31,23 +33,28 @@ void d1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_until(system_clock::now() + seconds(8));
+    sleep_for(seconds(8));
+    //sleep_until(system_clock::now() + seconds(8));
 }
 
 void a2() {
-    sleep_until(system_clock::now() + seconds(2));
+    sleep_for(seconds(2));
+    //sleep_until(system_clock::now() + seconds(2));
 }
 
 void b2() {
-    sleep_until(system_clock::now() + seconds(3));
+    sleep_for(seconds(3));
+    //sleep_until(system_clock::now() + seconds(3));
 }
 
 void c2() {
-    sleep_until(system_clock::now() + seconds(5));
+    sleep_for(seconds(5));
+    //sleep_until(system_clock::now() + seconds(5));
 }
 
 void d2() {
-    sleep_until(system_clock::now() + seconds(8));
+    sleep_for(seconds(8));
+    //sleep_until(system_clock::now() + seconds(8));
 }
 
 void test1() {
@@ -56,48 +63,26 @@ void test1() {
 
         std::thread t1(a1);
         std::thread t2(b1);
-        std::thread t3(a1);
-        std::thread t4(c1);
-        std::thread t5(d1);
-        std::thread t6(d1);
-        std::thread t7(d1);
-        std::thread t8(a1);
+
 
         t1.join();
         t2.join();
-        t3.join();
-        t4.join();
-        t5.join();
-        t6.join();
-        t7.join();
-        t8.join();
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test1 with log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test1 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
 
         std::thread t1(a2);
         std::thread t2(b2);
-        std::thread t3(a2);
-        std::thread t4(c2);
-        std::thread t5(d2);
-        std::thread t6(d2);
-        std::thread t7(d2);
-        std::thread t8(a2);
+
 
         t1.join();
         t2.join();
-        t3.join();
-        t4.join();
-        t5.join();
-        t6.join();
-        t7.join();
-        t8.join();
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test1 without log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test1 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
 }
 
@@ -126,8 +111,8 @@ void test2() {
         t9.join();
         t10.join();
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test2 with log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test2 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
@@ -153,8 +138,8 @@ void test2() {
         t9.join();
         t10.join();
 
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test2 without log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test2 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
 }
 
@@ -162,17 +147,17 @@ void test3() {
     {
         auto start = std::chrono::high_resolution_clock::now();
         std::thread t1(d1);
-        std::thread t2(b1);
-        std::thread t3(b1);
-        std::thread t4(b1);
-        std::thread t5(a1);
-        std::thread t6(a1);
-        std::thread t7(a1);
-        std::thread t8(c1);
-        std::thread t9(c1);
-        std::thread t10(a1);
+        std::thread t2(d1);
+        std::thread t3(d1);
+        std::thread t4(d1);
+        std::thread t5(d1);
+        std::thread t6(d1);
+        std::thread t7(d1);
+        std::thread t8(d1);
+        std::thread t9(d1);
+        std::thread t10(d1);
         std::thread t11(d1);
-        std::thread t12(c1);
+        std::thread t12(d1);
         std::thread t13(d1);
         std::thread t14(d1);
         std::thread t15(d1);
@@ -194,23 +179,23 @@ void test3() {
         t14.join();
         t15.join();
         t16.join();
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test3 with log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test3 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
         std::thread t1(d2);
-        std::thread t2(b2);
-        std::thread t3(b2);
-        std::thread t4(b2);
-        std::thread t5(a2);
-        std::thread t6(a2);
-        std::thread t7(a2);
-        std::thread t8(c2);
-        std::thread t9(c2);
-        std::thread t10(a2);
+        std::thread t2(d2);
+        std::thread t3(d2);
+        std::thread t4(d2);
+        std::thread t5(d2);
+        std::thread t6(d2);
+        std::thread t7(d2);
+        std::thread t8(d2);
+        std::thread t9(d2);
+        std::thread t10(d2);
         std::thread t11(d2);
-        std::thread t12(c2);
+        std::thread t12(d2);
         std::thread t13(d2);
         std::thread t14(d2);
         std::thread t15(d2);
@@ -232,7 +217,7 @@ void test3() {
         t14.join();
         t15.join();
         t16.join();
-        auto end = std::chrono::high_resolution_clock::now();
-        std::cout << "test3 without log: " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << "\n";
+        auto end = std::chrono::system_clock::now();
+        std::cout << "test3 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
     }
 }
