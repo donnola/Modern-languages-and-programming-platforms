@@ -9,8 +9,8 @@ std::mutex Logger::log_mutex;
 
 
 Logger::~Logger() {
-    auto cur = std::chrono::system_clock::now();
-    auto cur_time = std::chrono::system_clock::to_time_t(cur);
+    auto cur = std::chrono::high_resolution_clock::now();
+    auto cur_time = std::chrono::high_resolution_clock::to_time_t(cur);
     std::string file_name = "log_"+ std::to_string(cur_time) + ".txt";
     std::ofstream log_file(file_name);
 

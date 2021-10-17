@@ -6,8 +6,10 @@ void a1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_for(seconds(2));
-    //sleep_until(system_clock::now() + seconds(2));
+    std::vector<int> a;
+    for (int i = 0; i < 20000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void b1() {
@@ -15,8 +17,10 @@ void b1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_for(seconds(3));
-    //sleep_until(system_clock::now() + seconds(3));
+    std::vector<int> a;
+    for (int i = 0; i < 30000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void c1() {
@@ -24,8 +28,10 @@ void c1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_for(seconds(5));
-    //sleep_until(system_clock::now() + seconds(5));
+    std::vector<int> a;
+    for (int i = 0; i < 50000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void d1() {
@@ -33,28 +39,38 @@ void d1() {
     static uint id = Logger::TakeId(fn);
     Timer t(id);
 
-    sleep_for(seconds(8));
-    //sleep_until(system_clock::now() + seconds(8));
+    std::vector<int> a;
+    for (int i = 0; i < 80000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void a2() {
-    sleep_for(seconds(2));
-    //sleep_until(system_clock::now() + seconds(2));
+    std::vector<int> a;
+    for (int i = 0; i < 20000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void b2() {
-    sleep_for(seconds(3));
-    //sleep_until(system_clock::now() + seconds(3));
+    std::vector<int> a;
+    for (int i = 0; i < 30000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void c2() {
-    sleep_for(seconds(5));
-    //sleep_until(system_clock::now() + seconds(5));
+    std::vector<int> a;
+    for (int i = 0; i < 50000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void d2() {
-    sleep_for(seconds(8));
-    //sleep_until(system_clock::now() + seconds(8));
+    std::vector<int> a;
+    for (int i = 0; i < 80000; ++i) {
+        a.push_back(1);
+    }
 }
 
 void test1() {
@@ -68,8 +84,8 @@ void test1() {
         t1.join();
         t2.join();
 
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test1 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test1 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
@@ -81,8 +97,8 @@ void test1() {
         t1.join();
         t2.join();
 
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test1 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test1 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
 }
 
@@ -111,8 +127,8 @@ void test2() {
         t9.join();
         t10.join();
 
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test2 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test2 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
@@ -138,8 +154,8 @@ void test2() {
         t9.join();
         t10.join();
 
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test2 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test2 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
 }
 
@@ -179,8 +195,8 @@ void test3() {
         t14.join();
         t15.join();
         t16.join();
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test3 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test3 with log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
@@ -217,7 +233,7 @@ void test3() {
         t14.join();
         t15.join();
         t16.join();
-        auto end = std::chrono::system_clock::now();
-        std::cout << "test3 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << "\n";
+        auto end = std::chrono::high_resolution_clock::now();
+        std::cout << "test3 without log: " << std::chrono::duration<double,std::milli>(end - start).count() << " milliseconds\n";
     }
 }
