@@ -3,7 +3,8 @@ using namespace std::chrono;
 
 void a1() {
     std::string fn = __FUNCTION__;
-    static uint id = Logger::TakeId(fn);
+    Logger* log = Logger::GetInstance();
+    static uint id = log->TakeId(fn);
     Timer t(id);
 
     std::vector<int> a;
@@ -14,7 +15,8 @@ void a1() {
 
 void b1() {
     std::string fn = __FUNCTION__;
-    static uint id = Logger::TakeId(fn);
+    Logger* log = Logger::GetInstance();
+    static uint id = log->TakeId(fn);
     Timer t(id);
 
     std::vector<int> a;
@@ -25,7 +27,8 @@ void b1() {
 
 void c1() {
     std::string fn = __FUNCTION__;
-    static uint id = Logger::TakeId(fn);
+    Logger* log = Logger::GetInstance();
+    static uint id = log->TakeId(fn);
     Timer t(id);
 
     std::vector<int> a;
@@ -36,7 +39,8 @@ void c1() {
 
 void d1() {
     std::string fn = __FUNCTION__;
-    static uint id = Logger::TakeId(fn);
+    Logger* log = Logger::GetInstance();
+    static uint id = log->TakeId(fn);
     Timer t(id);
 
     std::vector<int> a;

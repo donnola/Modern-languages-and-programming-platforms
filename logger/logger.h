@@ -3,7 +3,7 @@
 
 #include <string>
 #include <chrono>
-#include <mutex>
+#include <atomic>
 #include <vector>
 #include <deque>
 #include "timeinfo.h"
@@ -12,15 +12,15 @@
 class Logger {
     friend class Timer;
 public:
-    static uint TakeId(const std::string& fn);
+    uint TakeId(const std::string& fn);
     static Logger* GetInstance();
 private:
     Logger() = default;
     ~Logger();
     static Logger* loggerInstance;
-    static std::mutex log_mutex;
-    void AddInfo(uint id, long time_elapsed);
-    std::deque<TimeInfo> log_info;
+    static void AddInfo(uint id, long time_elapsed);
+    static std::vector<TimeInfo> log_info;
+    std::atomic_uint cur_id = 0;
 };
 
 

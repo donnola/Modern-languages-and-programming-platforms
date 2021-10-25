@@ -5,8 +5,7 @@
 
 
 Logger* Logger::loggerInstance = nullptr;
-std::mutex Logger::log_mutex;
-
+std::vector<TimeInfo> Logger::log_info(100000);
 
 Logger::~Logger() {
     auto cur = std::chrono::high_resolution_clock::now();
@@ -14,10 +13,10 @@ Logger::~Logger() {
     std::string file_name = "log_"+ std::to_string(cur_time) + ".txt";
     std::ofstream log_file(file_name);
 
-    for (auto& f : log_info) {
-        std::string name = f.func_name;
-        size_t function_call_num = f.count;
-        size_t work_time = f.time;
+    for (uint i = 0; i < cur_id; ++i) {
+        std::string name = log_info[i].func_name;
+        size_t function_call_num = log_info[i].count;
+        size_t work_time = log_info[i].time;
         std::string log_string = "function " + name + " worked " + std::to_string(work_time) + " milliseconds " +
                                  std::to_string(function_call_num) + " times\n";
         log_file << log_string;
@@ -41,10 +40,8 @@ Logger* Logger::GetInstance() {
 }
 
 uint Logger::TakeId(const std::string& fn) {
-    std::lock_guard<std::mutex> lock(log_mutex);
-    Logger* log = GetInstance();
-    uint id = log->log_info.size();
-    log->log_info.emplace_back(fn);
+    uint id = cur_id++;
+    log_info[id].func_name = fn;
     return id;
 }
 
