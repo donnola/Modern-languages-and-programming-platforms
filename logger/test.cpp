@@ -8,69 +8,12 @@ void a1() {
     Timer t(id);
 
     std::vector<int> a;
-    for (int i = 0; i < 20000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void b1() {
-    std::string fn = __FUNCTION__;
-    Logger* log = Logger::GetInstance();
-    static uint id = log->TakeId(fn);
-    Timer t(id);
-
-    std::vector<int> a;
-    for (int i = 0; i < 30000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void c1() {
-    std::string fn = __FUNCTION__;
-    Logger* log = Logger::GetInstance();
-    static uint id = log->TakeId(fn);
-    Timer t(id);
-
-    std::vector<int> a;
-    for (int i = 0; i < 50000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void d1() {
-    std::string fn = __FUNCTION__;
-    Logger* log = Logger::GetInstance();
-    static uint id = log->TakeId(fn);
-    Timer t(id);
-
-    std::vector<int> a;
     for (int i = 0; i < 80000; ++i) {
         a.push_back(1);
     }
 }
 
 void a2() {
-    std::vector<int> a;
-    for (int i = 0; i < 20000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void b2() {
-    std::vector<int> a;
-    for (int i = 0; i < 30000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void c2() {
-    std::vector<int> a;
-    for (int i = 0; i < 50000; ++i) {
-        a.push_back(1);
-    }
-}
-
-void d2() {
     std::vector<int> a;
     for (int i = 0; i < 80000; ++i) {
         a.push_back(1);
@@ -82,7 +25,7 @@ void test1() {
         auto start = std::chrono::high_resolution_clock::now();
 
         std::thread t1(a1);
-        std::thread t2(b1);
+        std::thread t2(a1);
 
 
         t1.join();
@@ -95,7 +38,7 @@ void test1() {
         auto start = std::chrono::high_resolution_clock::now();
 
         std::thread t1(a2);
-        std::thread t2(b2);
+        std::thread t2(a2);
 
 
         t1.join();
@@ -109,16 +52,16 @@ void test1() {
 void test2() {
     {
         auto start = std::chrono::high_resolution_clock::now();
-        std::thread t1(d1);
-        std::thread t2(b1);
-        std::thread t3(c1);
-        std::thread t4(d1);
+        std::thread t1(a1);
+        std::thread t2(a1);
+        std::thread t3(a1);
+        std::thread t4(a1);
         std::thread t5(a1);
-        std::thread t6(c1);
+        std::thread t6(a1);
         std::thread t7(a1);
-        std::thread t8(b1);
-        std::thread t9(d1);
-        std::thread t10(d1);
+        std::thread t8(a1);
+        std::thread t9(a1);
+        std::thread t10(a1);
 
         t1.join();
         t2.join();
@@ -136,16 +79,16 @@ void test2() {
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
-        std::thread t1(d2);
-        std::thread t2(b2);
-        std::thread t3(c2);
-        std::thread t4(d2);
-        std::thread t5(a2);
-        std::thread t6(c2);
-        std::thread t7(a2);
-        std::thread t8(b2);
-        std::thread t9(d2);
-        std::thread t10(d2);
+        std::thread t1(a1);
+        std::thread t2(a1);
+        std::thread t3(a1);
+        std::thread t4(a1);
+        std::thread t5(a1);
+        std::thread t6(a1);
+        std::thread t7(a1);
+        std::thread t8(a1);
+        std::thread t9(a1);
+        std::thread t10(a1);
 
         t1.join();
         t2.join();
@@ -166,22 +109,22 @@ void test2() {
 void test3() {
     {
         auto start = std::chrono::high_resolution_clock::now();
-        std::thread t1(d1);
-        std::thread t2(d1);
-        std::thread t3(d1);
-        std::thread t4(d1);
-        std::thread t5(d1);
-        std::thread t6(d1);
-        std::thread t7(d1);
-        std::thread t8(d1);
-        std::thread t9(d1);
-        std::thread t10(d1);
-        std::thread t11(d1);
-        std::thread t12(d1);
-        std::thread t13(d1);
-        std::thread t14(d1);
-        std::thread t15(d1);
-        std::thread t16(d1);
+        std::thread t1(a1);
+        std::thread t2(a1);
+        std::thread t3(a1);
+        std::thread t4(a1);
+        std::thread t5(a1);
+        std::thread t6(a1);
+        std::thread t7(a1);
+        std::thread t8(a1);
+        std::thread t9(a1);
+        std::thread t10(a1);
+        std::thread t11(a1);
+        std::thread t12(a1);
+        std::thread t13(a1);
+        std::thread t14(a1);
+        std::thread t15(a1);
+        std::thread t16(a1);
 
         t1.join();
         t2.join();
@@ -204,22 +147,22 @@ void test3() {
     }
     {
         auto start = std::chrono::high_resolution_clock::now();
-        std::thread t1(d2);
-        std::thread t2(d2);
-        std::thread t3(d2);
-        std::thread t4(d2);
-        std::thread t5(d2);
-        std::thread t6(d2);
-        std::thread t7(d2);
-        std::thread t8(d2);
-        std::thread t9(d2);
-        std::thread t10(d2);
-        std::thread t11(d2);
-        std::thread t12(d2);
-        std::thread t13(d2);
-        std::thread t14(d2);
-        std::thread t15(d2);
-        std::thread t16(d2);
+        std::thread t1(a1);
+        std::thread t2(a1);
+        std::thread t3(a1);
+        std::thread t4(a1);
+        std::thread t5(a1);
+        std::thread t6(a1);
+        std::thread t7(a1);
+        std::thread t8(a1);
+        std::thread t9(a1);
+        std::thread t10(a1);
+        std::thread t11(a1);
+        std::thread t12(a1);
+        std::thread t13(a1);
+        std::thread t14(a1);
+        std::thread t15(a1);
+        std::thread t16(a1);
 
         t1.join();
         t2.join();
