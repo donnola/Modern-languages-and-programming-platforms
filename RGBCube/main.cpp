@@ -117,3 +117,6 @@ int main(int argc, char* argv[]){
 
     return 0;
 }
+
+// g++ main.cpp -o RGBCube -lglut -lGLU -lGL
+// ./RGBCube
