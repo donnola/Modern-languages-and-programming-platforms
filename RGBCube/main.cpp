@@ -4,6 +4,7 @@
 #include <ctime>
 #include <vector>
 
+/// структура хранящая координаты точки (x, y, z) и соответсвующий ей цвет (r, g, b)
 struct Point {
     float x;
     float y;
@@ -16,11 +17,14 @@ struct Point {
     r(i/255.0), g(j/255.0), b(k/255.0) {}
 };
 
+/// массив всех точек
 std::vector<Point> points;
 
+/// углы поворота
 double rotate_y=0;
 double rotate_x=0;
 
+/// отображение куба с точками в окне
 void display(){
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
@@ -65,7 +69,7 @@ void display(){
 
     glBegin(GL_POINTS);
     for (Point p : points) {
-        glColor3f(p.r, p.g, p.b); glVertex3f(  p.x,  p.y, p.z);
+        glColor3f(1,1,1); glVertex3f(  p.x,  p.y, p.z);
     }
     glEnd();
 
@@ -73,10 +77,8 @@ void display(){
     glutSwapBuffers();
 }
 
-
+/// поворот куба
 void specialKeys( int key, int x, int y ) {
-
-
     if (key == GLUT_KEY_RIGHT)
         rotate_y += 5;
 
@@ -120,3 +122,6 @@ int main(int argc, char* argv[]){
 
 // g++ main.cpp -o RGBCube -lglut -lGLU -lGL
 // ./RGBCube
+
+// doxygen
+// code style guide
