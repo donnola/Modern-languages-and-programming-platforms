@@ -39,7 +39,7 @@ int main() {
     std::ofstream test_with_log("testlog.cpp");
     std::ofstream test_without_log("test.cpp");
     srand(static_cast<unsigned int>(time(0)));
-    int func_num  = rand() % 15 + 1;
+    int func_num  = rand() % 20 + 7;
     for (int i = 0; i < func_num; ++i) {
         functions.push_back("a" + std::to_string(i));
     }
