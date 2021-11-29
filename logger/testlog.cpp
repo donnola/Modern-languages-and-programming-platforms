@@ -1,4 +1,8 @@
-void a0(){
+void a0l(){
+std::string fn = __FUNCTION__;
+Logger* log = Logger::GetInstance();
+static uint id = log->TakeId(fn);
+Timer t(id);
 int num = 518105;
 int den = 69;
 int quotient = 0;
@@ -22,13 +26,17 @@ while (num > den) {
 quotient *= pow10;
 }
 
-void a1(){
-std::thread t0(a0);
-std::thread t1(a0);
-std::thread t2(a0);
-std::thread t3(a0);
-std::thread t4(a0);
-std::thread t5(a0);
+void a1l(){
+std::string fn = __FUNCTION__;
+Logger* log = Logger::GetInstance();
+static uint id = log->TakeId(fn);
+Timer t(id);
+std::thread t0(a0l);
+std::thread t1(a0l);
+std::thread t2(a0l);
+std::thread t3(a0l);
+std::thread t4(a0l);
+std::thread t5(a0l);
 t0.join();
 t1.join();
 t2.join();
@@ -58,15 +66,19 @@ while (num > den) {
 quotient *= pow10;
 }
 
-void a2(){
-std::thread t0(a0);
-std::thread t1(a0);
-std::thread t2(a1);
-std::thread t3(a0);
-std::thread t4(a1);
-std::thread t5(a1);
-std::thread t6(a1);
-std::thread t7(a0);
+void a2l(){
+std::string fn = __FUNCTION__;
+Logger* log = Logger::GetInstance();
+static uint id = log->TakeId(fn);
+Timer t(id);
+std::thread t0(a0l);
+std::thread t1(a0l);
+std::thread t2(a1l);
+std::thread t3(a0l);
+std::thread t4(a1l);
+std::thread t5(a1l);
+std::thread t6(a1l);
+std::thread t7(a0l);
 t0.join();
 t1.join();
 t2.join();
@@ -98,10 +110,14 @@ while (num > den) {
 quotient *= pow10;
 }
 
-void a3(){
-std::thread t0(a2);
-std::thread t1(a1);
-std::thread t2(a0);
+void a3l(){
+std::string fn = __FUNCTION__;
+Logger* log = Logger::GetInstance();
+static uint id = log->TakeId(fn);
+Timer t(id);
+std::thread t0(a2l);
+std::thread t1(a1l);
+std::thread t2(a0l);
 t0.join();
 t1.join();
 t2.join();
@@ -128,14 +144,18 @@ while (num > den) {
 quotient *= pow10;
 }
 
-void a4(){
-std::thread t0(a0);
-std::thread t1(a0);
-std::thread t2(a2);
-std::thread t3(a0);
-std::thread t4(a1);
-std::thread t5(a0);
-std::thread t6(a2);
+void a4l(){
+std::string fn = __FUNCTION__;
+Logger* log = Logger::GetInstance();
+static uint id = log->TakeId(fn);
+Timer t(id);
+std::thread t0(a0l);
+std::thread t1(a0l);
+std::thread t2(a2l);
+std::thread t3(a0l);
+std::thread t4(a1l);
+std::thread t5(a0l);
+std::thread t6(a2l);
 t0.join();
 t1.join();
 t2.join();
@@ -166,17 +186,17 @@ while (num > den) {
 quotient *= pow10;
 }
 
-void test_without_log(){
-std::thread t0(a4);
-std::thread t1(a4);
-std::thread t2(a2);
-std::thread t3(a2);
-std::thread t4(a3);
-std::thread t5(a4);
-std::thread t6(a0);
-std::thread t7(a3);
-std::thread t8(a1);
-std::thread t9(a1);
+void test_with_log(){
+std::thread t0(a4l);
+std::thread t1(a4l);
+std::thread t2(a2l);
+std::thread t3(a2l);
+std::thread t4(a3l);
+std::thread t5(a4l);
+std::thread t6(a0l);
+std::thread t7(a3l);
+std::thread t8(a1l);
+std::thread t9(a1l);
 t0.join();
 t1.join();
 t2.join();
