@@ -1,0 +1,16 @@
+function a13l worked 33 milliseconds 1 times
+function a8l worked 78 milliseconds 3 times
+function a7l worked 236 milliseconds 15 times
+function a11l worked 26 milliseconds 1 times
+function a2l worked 216 milliseconds 114 times
+function a5l worked 337 milliseconds 16 times
+function a4l worked 425 milliseconds 38 times
+function a3l worked 328 milliseconds 31 times
+function a0l worked 0 milliseconds 1205 times
+function a9l worked 127 milliseconds 6 times
+function a1l worked 1294 milliseconds 133 times
+function a6l worked 57 milliseconds 3 times
+function a14l worked 26 milliseconds 1 times
+function a12l worked 31 milliseconds 1 times
+function a10l worked 29 milliseconds 2 times
+function a15l worked 16 milliseconds 1 times
