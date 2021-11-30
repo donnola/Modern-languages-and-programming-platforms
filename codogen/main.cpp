@@ -5,15 +5,21 @@
 #include <cstdlib>
 #include <ctime>
 
+/// имена функций
 std::vector<std::string> functions;
-std::vector<std::string> templates;
+/// вставка в функцию для работы логгера
 std::string logger_template = "std::string fn = __FUNCTION__;\n"
                               "Logger* log = Logger::GetInstance();\n"
                               "static uint id = log->TakeId(fn);\n"
                               "Timer t(id);\n";
-std::string thread_template_start = "std::thread t";
+/// шаблон для потока
+std::string thread_template_start = "std::thread ";
 std::string thread_template_end = ".join();\n";
 
+/// шаблон функции
+/// в функции рандомно определяются числа
+/// int num
+/// int den
 std::string func_div = "int quotient = 0;\n"
                        "int digit;\n"
                        "int tden = den;\n"
@@ -39,6 +45,7 @@ int main() {
     std::ofstream test_with_log("testlog.cpp");
     std::ofstream test_without_log("test.cpp");
     srand(static_cast<unsigned int>(time(0)));
+    /// кол-во функций в файле
     int func_num  = rand() % 20 + 7;
     for (int i = 0; i < func_num; ++i) {
         functions.push_back("a" + std::to_string(i));
@@ -52,31 +59,38 @@ int main() {
     for (int i = 1; i < functions.size(); ++i) {
         num = rand() * rand() % 1000000 + 12345;
         den = rand() % 100 + 3;
+        /// кол-во потоков в текущей функции
         int thread_num = rand() % 10;
         test_with_log << "void " + functions[i] + "l(){\n" + logger_template;
         test_without_log << "void " + functions[i] + "(){\n";
+        /// открытие потоков
         for (int j = 0; j < thread_num; ++j) {
             int k = rand() % i;
-            test_with_log << thread_template_start + std::to_string(j) + "(" + functions[k] + "l);\n";
-            test_without_log << thread_template_start + std::to_string(j) + "(" + functions[k] + ");\n";
+            test_with_log << thread_template_start + "t" + std::to_string(j) + "(" + functions[k] + "l);\n";
+            test_without_log << thread_template_start +  "t" + std::to_string(j) + "(" + functions[k] + ");\n";
         }
+        /// закрытие потоков
         for (int j = 0; j < thread_num; ++j) {
             test_with_log << "t" + std::to_string(j) + thread_template_end;
             test_without_log << "t" + std::to_string(j) + thread_template_end;
         }
+        /// сама функция
         test_with_log << "int num = " + std::to_string(num) + ";\nint den = " +
                          std::to_string(den) + ";\n" + func_div;
         test_without_log << "int num = " + std::to_string(num) + ";\nint den = " +
                             std::to_string(den) + ";\n" + func_div;
     }
+    /// функции запуска теста
     test_with_log << "void test_with_log(){\n";
     test_without_log << "void test_without_log(){\n";
     int thread_num = rand() % 17 + 6;
+    /// открытие потоков
     for (int j = 0; j < thread_num; ++j) {
         int k = rand() % functions.size();
-        test_with_log << thread_template_start + std::to_string(j) + "(" + functions[k] + "l);\n";
-        test_without_log << thread_template_start + std::to_string(j) + "(" + functions[k] + ");\n";
+        test_with_log << thread_template_start + "t" + std::to_string(j) + "(" + functions[k] + "l);\n";
+        test_without_log << thread_template_start + "t" + std::to_string(j) + "(" + functions[k] + ");\n";
     }
+    /// закрытие потоков
     for (int j = 0; j < thread_num; ++j) {
         test_with_log << "t" + std::to_string(j) + thread_template_end;
         test_without_log << "t" + std::to_string(j) + thread_template_end;
