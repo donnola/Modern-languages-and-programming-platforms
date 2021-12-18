@@ -2,6 +2,7 @@
 #include <functional>
 #include <thread>
 #include "timer.h"
+#include "logger.h"
 #include "test.cpp"
 #include "testlog.cpp"
 

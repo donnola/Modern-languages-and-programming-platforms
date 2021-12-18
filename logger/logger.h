@@ -33,7 +33,7 @@ private:
     /// вектор с информацией работы всех функций
     static std::vector<TimeInfo> log_info;
     /// id для новой функции
-    std::atomic_uint cur_id = 0;
+    std::atomic_uint cur_id;
 };
 
 

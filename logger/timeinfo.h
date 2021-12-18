@@ -10,9 +10,9 @@ struct TimeInfo {
     /// имя функции
     std::string func_name;
     /// время работы функции
-    std::atomic_long time = 0;
+    std::atomic_long time;
     /// количество запусков функции
-    std::atomic_uint count = 0;
+    std::atomic_uint count;
 
     explicit TimeInfo() = default;
     /// конструктор копированием
