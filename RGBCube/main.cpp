@@ -78,6 +78,9 @@ void display(){
 }
 
 /// поворот куба
+/// \param key - ключ поворота
+/// \param x - координата мыши x относительно окна
+/// \param y - координата мыши y относительно окна
 void specialKeys( int key, int x, int y ) {
     if (key == GLUT_KEY_RIGHT)
         rotate_y += 5;
