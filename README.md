@@ -18,11 +18,4 @@ Ubuntu:
 
 Windows:
 
-Загрузите GLUT из https://www.opengl.org/ресурсы/библиотеки/glut/glut_downloads.php , распакуйте и скопируйте файлы, как указано ниже:
-
-    glut.h в папку C:\Program Files\Microsoft SDKs\Windows\v6.0A\Include\gl\
-    
-    glut32.lib в папку C:\Program Files\Microsoft SDKs\Windows\v6.0A\Lib\
-    
-    glut32.dll в папку C:\Windows\System32\
-
+инструкция установки GLUT https://w3.cs.jmu.edu/bernstdh/web/common/help/cpp_mingw-glut-setup.php
