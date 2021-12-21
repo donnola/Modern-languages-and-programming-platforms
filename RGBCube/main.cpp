@@ -1,8 +1,11 @@
 #include <iostream>
-#include <GL/glut.h>
+//#include <GL/glut.h>
+#include <GL/freeglut.h>
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <opencv2/imgcodecs.hpp>
+
 
 /// структура хранящая координаты точки (x, y, z) и соответсвующий ей цвет (r, g, b)
 struct Point {
@@ -99,14 +102,22 @@ void specialKeys( int key, int x, int y ) {
 
 
 int main(int argc, char* argv[]){
-    srand(static_cast<unsigned int>(time(0)));
-    int N = 1000;
-    for (int i = 0; i < N; ++i) {
-        int x = rand() % 255;
-        int y = rand() % 255;
-        int z = rand() % 255;
-        points.emplace_back(x,y,z);
+
+    std::cout << "введите адрес изображения\n";
+    std::string img_path;
+    std::cin >> img_path;
+    cv::Mat frame = cv::imread(img_path);
+
+    for(int i=0; i< frame.rows ;i++)
+    {
+        for(int j=0; j< frame.cols ; j++)
+        {
+            points.emplace_back(int(frame.at<cv::Vec3b>(i, j)[0]),
+                                int(frame.at<cv::Vec3b>(i, j)[1]),
+                                int(frame.at<cv::Vec3b>(i, j)[2]));
+        }
     }
+
     glutInit(&argc,argv);
 
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
