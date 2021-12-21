@@ -1,8 +1,11 @@
 #include <iostream>
-#include <glut.h>
 #include <vector>
 #include <opencv2/imgcodecs.hpp>
-
+#ifdef __unix__
+#include <GL/glut.h>
+#elif defined(_WIN32) || defined(WIN32)
+#include <glut.h>
+#endif
 
 /// структура хранящая координаты точки (x, y, z) и соответсвующий ей цвет (r, g, b)
 struct Point {
