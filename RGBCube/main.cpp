@@ -71,7 +71,8 @@ void display(){
 
     glBegin(GL_POINTS);
     for (Point p : points) {
-        glColor3f(p.r,p.g,p.b); glVertex3f(  p.x,  p.y, p.z);
+//        glColor3f(p.r,p.g,p.b); glVertex3f(  p.x,  p.y, p.z);
+        glColor3f(1,1,1); glVertex3f(  p.x,  p.y, p.z);
     }
     glEnd();
 
