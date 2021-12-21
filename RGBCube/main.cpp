@@ -1,5 +1,5 @@
 #include <iostream>
-#include <GL/glut.h>
+#include <glut.h>
 #include <vector>
 #include <opencv2/imgcodecs.hpp>
 
