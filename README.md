@@ -18,7 +18,7 @@ Ubuntu:
 
 Windows:
 
-инструкция установки GLUT 
+инструкция установки GLUT (архив лежит в RGBCube)
 
 https://w3.cs.jmu.edu/bernstdh/web/common/help/cpp_mingw-glut-setup.php
 
