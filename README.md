@@ -12,6 +12,10 @@ RGBCube - отображение в крутящемся кубе распред
 
 Ubuntu:
 
-$ sudo apt-get update
+    $ sudo apt-get update
 
-$ sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+    $ sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
+
+Windows:
+
+инструкция установки GLUT https://w3.cs.jmu.edu/bernstdh/web/common/help/cpp_mingw-glut-setup.php
