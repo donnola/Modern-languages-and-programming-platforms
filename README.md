@@ -18,4 +18,8 @@ Ubuntu:
 
 Windows:
 
-инструкция установки GLUT https://w3.cs.jmu.edu/bernstdh/web/common/help/cpp_mingw-glut-setup.php
+инструкция установки GLUT 
+
+https://w3.cs.jmu.edu/bernstdh/web/common/help/cpp_mingw-glut-setup.php
+
+https://coderoad.ru/12171317/Как-вы-устанавливаете-GLUT-и-OpenGL-в-Visual-Studio-2012#46783705
