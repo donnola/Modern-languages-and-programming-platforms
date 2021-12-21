@@ -1,8 +1,5 @@
 #include <iostream>
-//#include <GL/glut.h>
-#include <GL/freeglut.h>
-#include <cstdlib>
-#include <ctime>
+#include <GL/glut.h>
 #include <vector>
 #include <opencv2/imgcodecs.hpp>
 
@@ -26,6 +23,8 @@ std::vector<Point> points;
 /// углы поворота
 double rotate_y=0;
 double rotate_x=0;
+
+bool work = true;
 
 /// отображение куба с точками в окне
 void display(){
@@ -72,7 +71,7 @@ void display(){
 
     glBegin(GL_POINTS);
     for (Point p : points) {
-        glColor3f(1,1,1); glVertex3f(  p.x,  p.y, p.z);
+        glColor3f(p.r,p.g,p.b); glVertex3f(  p.x,  p.y, p.z);
     }
     glEnd();
 
@@ -96,7 +95,6 @@ void specialKeys( int key, int x, int y ) {
 
     else if (key == GLUT_KEY_DOWN)
         rotate_x -= 5;
-
     glutPostRedisplay();
 }
 
