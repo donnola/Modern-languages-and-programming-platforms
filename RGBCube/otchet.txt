@@ -3,8 +3,8 @@
 массив всех точек - std::vector<Point> points
 углы поворота - double rotate_y=0; double rotate_x=0
 отображение куба с точками в окне - void display()
-поворот куба - void specialKeys
-    param key - ключ поворота( int key, int x, int y )
+поворот куба - void specialKeys( int key, int x, int y )
+    param key - ключ поворота
     param x - координата мыши x относительно окна
     param y - координата мыши y относительно окна
 в main считываение изображения и запуск отображения куба
