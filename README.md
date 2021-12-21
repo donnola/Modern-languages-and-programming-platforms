@@ -9,6 +9,8 @@ RGBCube - отображение в крутящемся кубе распред
 для работы необходимо:
 
 Ubuntu:
+
 $ sudo apt-get update
+
 $ sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
 
