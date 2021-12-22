@@ -21,6 +21,7 @@ if(WIN32)
 
     target_link_libraries(RGBCube ${OPENGL_LIBRARIES} ${OpenCV_LIBS})
     add_dependencies(RGBCube glutdlllib)
+    install(TARGETS RGBCube DESTINATION .)
 endif()
 if(UNIX)
     cmake_minimum_required(VERSION 3.16)
@@ -34,4 +35,5 @@ if(UNIX)
     add_executable(RGBCube main.cpp)
 
     target_link_libraries(RGBCube ${OPENGL_LIBRARIES} ${OpenCV_LIBS} ${GLUT_LIBRARY})
+    install(TARGETS RGBCube DESTINATION .)
 endif()
