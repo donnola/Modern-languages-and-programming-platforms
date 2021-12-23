@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <opencv2/imgcodecs.hpp>
+#include <opencv2/opencv.hpp>
 #ifdef __unix__
 #include <GL/glut.h>
 #else
