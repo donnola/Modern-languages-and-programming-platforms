@@ -6,13 +6,13 @@ if(WIN32)
     include_directories(freeglut)
     include_directories( ${OPENGL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-    set(FREEGLUT_LIBRARY "" CACHE FILEPATH  ${PROJECT_SOURCE_DIR}/freeglut/lib/x64/freeglut.lib)
+    link_directories(${PROJECT_SOURCE_DIR}/freeglut/lib/x64)
     include_directories(${PROJECT_SOURCE_DIR}/freeglut/include/GL)
     set(CMAKE_CXX_STANDARD 20)
 
     add_executable(RGBCube main.cpp)
 
-    target_link_libraries(RGBCube ${OPENGL_LIBRARIES} ${FREEGLUT_LIBRARY} ${OpenCV_LIBS})
+    target_link_libraries(RGBCube ${OPENGL_LIBRARIES} ${OpenCV_LIBS})
     install(TARGETS RGBCube DESTINATION .)
     install(FILES  freeglut/bin/x64/freeglut.dll DESTINATION .)
 endif()
