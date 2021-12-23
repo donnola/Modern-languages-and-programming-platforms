@@ -6,9 +6,9 @@ if(WIN32)
     include_directories(freeglut)
     add_custom_target(glutdlllib
             COMMAND ${CMAKE_COMMAND} -E copy
-            ${PROJECT_SOURCE_DIR}/freeglut/bin/freeglut.dll
+#            ${PROJECT_SOURCE_DIR}/freeglut/bin/freeglut.dll
             ${PROJECT_SOURCE_DIR}/freeglut/bin/x64/freeglut.dll
-            ${PROJECT_SOURCE_DIR}/freeglut/lib/freeglut.lib
+#            ${PROJECT_SOURCE_DIR}/freeglut/lib/freeglut.lib
             ${PROJECT_SOURCE_DIR}/freeglut/lib/x64/freeglut.lib
             ${PROJECT_SOURCE_DIR}/freeglut/include/GL/freeglut.h
             ${PROJECT_SOURCE_DIR}/freeglut/include/GL/glut.h
