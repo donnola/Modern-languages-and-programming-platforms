@@ -12,6 +12,8 @@ if(WIN32)
             ${PROJECT_SOURCE_DIR}/freeglut/lib/x64/freeglut.lib
             ${PROJECT_SOURCE_DIR}/freeglut/include/GL/freeglut.h
             ${PROJECT_SOURCE_DIR}/freeglut/include/GL/glut.h
+            ${PROJECT_SOURCE_DIR}/freeglut/include/GL/freeglut_std.h
+            ${PROJECT_SOURCE_DIR}/freeglut/include/GL/freeglut_ext.h
             ${CMAKE_BINARY_DIR}
             )
     include_directories( ${OPENGL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
