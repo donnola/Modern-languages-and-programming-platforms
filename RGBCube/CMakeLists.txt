@@ -6,8 +6,8 @@ if(WIN32)
     include_directories(freeglut)
     include_directories( ${OPENGL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-    link_directories(${PROJECT_SOURCE_DIR}/freeglut/lib/x64)
-    include_directories(${PROJECT_SOURCE_DIR}/freeglut/include/GL)
+    link_directories(freeglut/lib/x64)
+    include_directories(freeglut/include/GL)
     set(CMAKE_CXX_STANDARD 20)
 
     add_executable(RGBCube main.cpp)
