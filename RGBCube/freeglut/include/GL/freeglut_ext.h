@@ -203,7 +203,6 @@ FGAPI GLUTproc FGAPIENTRY glutGetProcAddress( const char *procName );
 #define GLUT_HAS_MULTI 1
 
 
-   cf. http://sourceforge.net/mailarchive/forum.php?thread_name=20120518071314.GA28061%40perso.beuc.net&forum_name=freeglut-developer */
 FGAPI void FGAPIENTRY glutMultiEntryFunc( void (* callback)( int, int ) );
 FGAPI void FGAPIENTRY glutMultiButtonFunc( void (* callback)( int, int, int, int, int ) );
 FGAPI void FGAPIENTRY glutMultiMotionFunc( void (* callback)( int, int, int ) );
